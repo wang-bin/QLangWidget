@@ -18,13 +18,13 @@
 ******************************************************************************/
 
 #include <qapplication.h>
-#include "qlangcombo.h"
+#include "tstwindow.h"
 
 int main(int argc, char **argv)
 {
     QApplication a(argc, argv);
-    QLangCombo lcb;
-    lcb.show();
+    TstWindow w;
+    w.show();
     return a.exec();
 }
 

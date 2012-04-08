@@ -1,6 +1,6 @@
 /******************************************************************************
-    qlangwidget.h: description
-    Copyright (C) 2011-2012 Wang Bin <wbsecg1@gmail.com>
+    tstwindow.cpp: description
+    Copyright (C) 2012 Wang Bin <wbsecg1@gmail.com>
     
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,38 +16,36 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ******************************************************************************/
-#ifndef QLANGCOMBO_H
-#define QLANGCOMBO_H
 
-#include "qabstractlanglist.h"
-#ifdef QT_VERSION4
-#include <QComboBox>
-#else
-#include <qcombobox.h>
-#include <qlistbox.h>
-#endif //QT_VERSION4
 
-class QLangCombo : public QComboBox, private QAbstractLangList
+#include "tstwindow.h"
+#include <QtGui/QMenuBar>
+#include <QtGui/QToolBar>
+#include <QtGui/QLabel>
+
+#include "qlangcombo.h"
+#include "qlangmenu.h"
+
+TstWindow::TstWindow(QWidget *parent) :
+    QMainWindow(parent)
 {
-    Q_OBJECT
-public:
-    QLangCombo(QWidget* parent = 0, const QString& langCode = QString(), const QString& qmfilter = "*" \
-            , const QString &qmd = "i18n",const QString &conf = "i18n.cfg");
-    virtual ~QLangCombo() {}
+    lc = new QLangCombo(this);
+    lm = new QLangMenu(this);
 
-signals:
-    void langChanged(); //use changEvent in Qt4
+    connect(lc, SIGNAL(langChanged()), SLOT(retranslateUi()));
+    connect(lm, SIGNAL(langChanged()), SLOT(retranslateUi()));
 
-public slots:
-    void setLangIndex(int);
+    menuBar()->addMenu(lm);
+    QToolBar *tb = addToolBar("LangCombo");
+    tb->addWidget(lc);
+    QLabel *lb = new QLabel(this);
+    setCentralWidget(lb);
+    retranslateUi();
+}
 
-private:
-    void clear();
-    void insertItem(int index,const QString& name,const QIcon& f=QIcon());
-    void setItemText(int index,const QString& name);
-    void setCurrentIndex(int index);
-
-};
-
-#endif // QLANGCOMBO_H
-
+void TstWindow::retranslateUi()
+{
+    qDebug("%s", __FUNCTION__);
+    QLabel *lb = static_cast<QLabel*>(centralWidget());
+    lb->setText(tr("Dynamic language switching test"));
+}

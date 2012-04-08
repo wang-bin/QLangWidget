@@ -247,7 +247,5 @@
         <file alias="flags/ZA.png">resources/flags/ZA.png</file>
         <file alias="flags/ZM.png">resources/flags/ZM.png</file>
         <file alias="flags/ZW.png">resources/flags/ZW.png</file>
-        <file>i18n/qlangwidget-en_US.qm</file>
-        <file>i18n/qlangwidget-zh_CN.qm</file>
     </qresource>
 </RCC>

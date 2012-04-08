@@ -35,7 +35,8 @@ class QLangMenu : public QMenu, private QAbstractLangList
 {
     Q_OBJECT
 public:
-    QLangMenu(QWidget* parent = 0,const QString& langCode = QString(),const QString& qmfilter = "*", const QString &qmd = "i18n",const QString &conf = "i18n.cfg");
+    QLangMenu(QWidget* parent = 0, const QString& langCode = QString(), const QString& qmfilter = "*" \
+            , const QString &qmd = "i18n",const QString &conf = "i18n.cfg");
     virtual ~QLangMenu() {}
 
 signals:

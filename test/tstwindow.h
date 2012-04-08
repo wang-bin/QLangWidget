@@ -1,6 +1,6 @@
 /******************************************************************************
-    qlangwidget.h: description
-    Copyright (C) 2011-2012 Wang Bin <wbsecg1@gmail.com>
+    tstwindow.h: description
+    Copyright (C) 2012 Wang Bin <wbsecg1@gmail.com>
     
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,38 +16,29 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ******************************************************************************/
-#ifndef QLANGCOMBO_H
-#define QLANGCOMBO_H
 
-#include "qabstractlanglist.h"
-#ifdef QT_VERSION4
-#include <QComboBox>
-#else
-#include <qcombobox.h>
-#include <qlistbox.h>
-#endif //QT_VERSION4
 
-class QLangCombo : public QComboBox, private QAbstractLangList
+#ifndef TSTWINDOW_H
+#define TSTWINDOW_H
+
+#include <QMainWindow>
+
+class QLangCombo;
+class QLangMenu;
+class TstWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    QLangCombo(QWidget* parent = 0, const QString& langCode = QString(), const QString& qmfilter = "*" \
-            , const QString &qmd = "i18n",const QString &conf = "i18n.cfg");
-    virtual ~QLangCombo() {}
-
+    explicit TstWindow(QWidget *parent = 0);
+    
 signals:
-    void langChanged(); //use changEvent in Qt4
-
+    
 public slots:
-    void setLangIndex(int);
+    void retranslateUi();
 
 private:
-    void clear();
-    void insertItem(int index,const QString& name,const QIcon& f=QIcon());
-    void setItemText(int index,const QString& name);
-    void setCurrentIndex(int index);
-
+    QLangCombo *lc;
+    QLangMenu *lm;
 };
 
-#endif // QLANGCOMBO_H
-
+#endif // TSTWINDOW_H

@@ -22,6 +22,7 @@
 *********************/
 /*!
   TODO:
+        ZConfig for ezx
         Repalce QLocale::languageToString(..) by a language-names table Translated by different language.
         Translate "System" in different languages.
         QMap<QString,QString> langMap; 用于setConfigDir等刷新列表
