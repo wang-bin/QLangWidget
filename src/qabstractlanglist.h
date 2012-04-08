@@ -50,15 +50,16 @@ public:
     void setThisQmDir(const QString& dir); //dir of qabstractlanglist-lc_cc.qm
     int langIndex(const QString& langCode);
     QString langCode(int);
-    void changeSysText();
     void setCurrentLangCode(const QString&);
-    #ifdef QT_VERSION4
+#ifdef QT_VERSION4
     void setCurrentLang(QLocale::Language lang);
-    #endif //QT_VERSION4
-    void updateLangList();
+#endif //QT_VERSION4
     int langCount() const;
-    QIcon flag(const QString& langCode) const;
 
+protected:
+    void changeSysText();
+    void updateLangList();
+    QIcon flag(const QString& langCode) const;
     virtual void clear();
     virtual void insertItem(int ,const QString&,const QIcon& ) =0;
     virtual void setItemText(int ,const QString& ) =0;
@@ -66,7 +67,7 @@ public:
     //virtual findQms();
     virtual bool changeLangIndex(int);
 
-    private:
+private:
     QAbstractLangListPrivate* d;
 };
 

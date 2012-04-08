@@ -147,6 +147,7 @@ QAbstractLangList::QAbstractLangList(const QString& langCode ,const QString& qmf
 
 QAbstractLangList::~QAbstractLangList()
 {
+    qDebug("%s", __FUNCTION__);
     delete d;
 }
 

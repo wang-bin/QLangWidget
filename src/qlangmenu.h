@@ -31,7 +31,7 @@ class QActionGroup;
 #define QMenu QPopupMenu
 #endif //QT_VERSION4
 
-class QLangMenu : public QMenu, private QAbstractLangList
+class QLangMenu : public QMenu, public QAbstractLangList
 {
     Q_OBJECT
 public:

@@ -21,7 +21,7 @@
 #ifndef TSTWINDOW_H
 #define TSTWINDOW_H
 
-#include <QMainWindow>
+#include <qmainwindow.h>
 
 class QLangCombo;
 class QLangMenu;
@@ -30,9 +30,7 @@ class TstWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit TstWindow(QWidget *parent = 0);
-    
-signals:
-    
+        
 public slots:
     void retranslateUi();
 

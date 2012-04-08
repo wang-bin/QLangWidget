@@ -27,7 +27,7 @@
 #include <qlistbox.h>
 #endif //QT_VERSION4
 
-class QLangCombo : public QComboBox, private QAbstractLangList
+class QLangCombo : public QComboBox, public QAbstractLangList
 {
     Q_OBJECT
 public:
